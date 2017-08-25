@@ -1,0 +1,15 @@
+INSERT INTO reservation (repeat_type) VALUES ('waiting');
+INSERT INTO reservation (repeat_type) VALUES ('waiting');
+INSERT INTO reservation (repeat_type) VALUES ('waiting');
+INSERT INTO reservation (repeat_type) VALUES ('waiting');
+INSERT INTO reservation (repeat_type) VALUES ('waiting');
+INSERT INTO reservation (repeat_type) VALUES ('waiting');
+INSERT INTO reservation (repeat_type) VALUES ('waiting');
+INSERT INTO reservation (repeat_type) VALUES ('waiting');
+INSERT INTO reservation (repeat_type) VALUES ('waiting');
+INSERT INTO reservation (repeat_type) VALUES ('waiting');
+INSERT INTO reservation (repeat_type) VALUES ('waiting');
+INSERT INTO reservation (repeat_type) VALUES ('waiting');
+INSERT INTO reservation (repeat_type) VALUES ('waiting');
+INSERT INTO reservation (repeat_type) VALUES ('waiting');
+INSERT INTO reservation (repeat_type) VALUES ('waiting');
