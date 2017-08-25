@@ -2,8 +2,11 @@ package com.example.batch.controller;
 
 import com.example.batch.entity.NextData;
 import com.example.batch.entity.PrevData;
+import com.example.batch.entity.reservation.Reservation;
+import com.example.batch.entity.reservation.ResultStatus;
 import com.example.batch.service.NextDataService;
 import com.example.batch.service.PrevDataService;
+import com.example.batch.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -24,6 +27,9 @@ public class DataController {
     @Autowired
     private NextDataService nextDataService;
 
+    @Autowired
+    private ReservationService reservationService;
+
     @RequestMapping(method = RequestMethod.GET, value="prev")
     public List<PrevData> getPrevData(){
         PrevData prevData = new PrevData();
@@ -40,4 +46,11 @@ public class DataController {
         return nextDataService.data();
     }
 
+    @RequestMapping(method = RequestMethod.GET, value="reservation")
+    public List<Reservation> getReservation(){
+        Reservation reservation = new Reservation();
+        reservation.setResultStatus(ResultStatus.waiting);
+        reservationService.create(reservation);
+        return reservationService.data();
+    }
 }
