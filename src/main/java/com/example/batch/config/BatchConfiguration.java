@@ -6,7 +6,7 @@ import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
-import org.springframework.batch.item.ItemProcessor;
+import org.springframework.batch.core.launch.support.RunIdIncrementer;
 import org.springframework.batch.item.database.JpaItemWriter;
 import org.springframework.batch.item.database.JpaPagingItemReader;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,8 +32,13 @@ public class BatchConfiguration {
     public StepBuilderFactory stepBuilderFactory;
 
     @Bean
-    public Job importJob() {
-        return jobBuilderFactory.get("importJob").start(step1()).build();
+    public Job importJob(JobCompletionNotificationListener listener) {
+        return jobBuilderFactory.get("importJob")
+                .incrementer(new RunIdIncrementer())
+                .listener(listener)
+                .flow(step1())
+                .end()
+                .build();
     }
 
     @Bean
@@ -64,16 +69,6 @@ public class BatchConfiguration {
         JpaItemWriter<Reservation> writer = new JpaItemWriter<>();
         writer.setEntityManagerFactory(entityManagerFactory);
         return writer;
-    }
-
-    public static class ReservationItemProcessor implements ItemProcessor<Reservation, Reservation> {
-
-        @Override
-        public Reservation process(final Reservation reservation) throws Exception {
-            final Reservation transformedPerson = reservation;
-            return transformedPerson;
-        }
-
     }
 
 }

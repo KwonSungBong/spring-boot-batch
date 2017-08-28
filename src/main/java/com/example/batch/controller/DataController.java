@@ -48,9 +48,6 @@ public class DataController {
 
     @RequestMapping(method = RequestMethod.GET, value="reservation")
     public List<Reservation> getReservation(){
-        Reservation reservation = new Reservation();
-        reservation.setResultStatus(ResultStatus.waiting);
-        reservationService.create(reservation);
         return reservationService.data();
     }
 }
