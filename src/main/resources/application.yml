@@ -15,3 +15,17 @@ spring:
     username: root
     password: password
     driver-class-name: com.mysql.jdbc.Driver
+
+  mail:
+    host: mail.bookstorage.kr
+    port: 587
+    username: ksb@bookstorage.kr
+    password: 123456
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+email-upload-path: /home/whilemouse/email
