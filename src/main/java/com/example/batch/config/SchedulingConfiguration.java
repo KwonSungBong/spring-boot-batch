@@ -32,8 +32,8 @@ public class SchedulingConfiguration {
     @Autowired
     private Job job;
 
-    @Scheduled(fixedRate = 5000)
-    public void test() throws Exception {
+    @Scheduled(initialDelay = 5000, fixedRate = 5000)
+    public void schedule() throws Exception {
         handle();
     }
 
