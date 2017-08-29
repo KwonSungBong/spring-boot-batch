@@ -4,12 +4,14 @@ import com.example.batch.component.EmailComponent;
 import com.example.batch.dto.EmailDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.mail.SimpleMailMessage;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -67,7 +69,7 @@ public class EmailController {
     public void createMail() {
         Map<String, String> props = labels.get("send");
 
-        EmailDto mailObject = new EmailDto();
+        EmailDto.Message mailObject = new EmailDto.Message();
         mailObject.setTo("rnjstjdqhd39@naver.com");
         mailObject.setSubject("TSET");
         mailObject.setText("TSETTEST");
@@ -80,7 +82,7 @@ public class EmailController {
     public void createMailWithTemplate() {
         Map<String, String> props = labels.get("sendTemplate");
 
-        EmailDto mailObject = new EmailDto();
+        EmailDto.Message mailObject = new EmailDto.Message();
 
         emailComponent.sendSimpleMessageUsingTemplate(mailObject.getTo(),
                 mailObject.getSubject(),
@@ -92,7 +94,7 @@ public class EmailController {
     public void createMailWithAttachment() {
         Map<String, String> props = labels.get("sendAttachment");
 
-        EmailDto mailObject = new EmailDto();
+        EmailDto.Message mailObject = new EmailDto.Message();
 
         emailComponent.sendMessageWithAttachment(
                 mailObject.getTo(),
@@ -101,4 +103,13 @@ public class EmailController {
                 attachmentPath
         );
     }
+
+    @RequestMapping(value = "/work", method = RequestMethod.POST)
+    public ResponseEntity<?> work(@RequestParam("attachment") List<MultipartFile> attachmentList,
+                                        @RequestParam("content") String content,
+                                        @RequestParam("recipient") List<String> recipientList) {
+
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
 }

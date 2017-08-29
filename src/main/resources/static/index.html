@@ -6,5 +6,56 @@
 </head>
 <body>
     index
+    <table>
+        <tr>
+            <th>work</th>
+            <td>
+                <input type="file" name="attachment" accept="*" />
+                <input type="file" name="attachment" accept="*" />
+                <input type="hidden" name="content" accept="*" value="content" />
+                <input type="hidden" name="recipient" accept="*" value="recipient1" />
+                <input type="hidden" name="recipient" accept="*" value="recipient2" />
+            </td>
+            <td>
+                <button id="work">work</button>
+            </td>
+        </tr>
+    </table>
+
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#work").click(function(){
+                work();
+            });
+        });
+
+        function work(){
+            var form = new FormData();
+            $("input[name=attachment]").each(function( index ) {
+                form.append("attachment", $( this )[0].files[0]);
+            });
+            form.append("content", $("input[name=content]").val());
+            $("input[name=recipient]").each(function( index ) {
+                form.append("recipient", $( this ).val());
+            });
+
+            $.ajax({
+                url:"/email/work",
+                type: "POST",
+                data: form,
+                enctype: 'multipart/form-data',
+                processData: false,
+                contentType: false,
+                cache: false,
+                success: function () {
+                    $("#uload_result_msg").text("File Upload Success");
+                },
+                error: function () {
+                    $("#uload_result_msg").text("File Upload Error");
+                }
+            });
+        }
+    </script>
 </body>
 </html>

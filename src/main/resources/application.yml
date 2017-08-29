@@ -28,4 +28,11 @@ spring:
           starttls:
             enable: true
 
+  resources:
+    cache-period: 0
+    static-locations: file:src/main/resources/static/
+
+multipart.maxFileSiz: 1MB
+multipart.maxRequestSize: 1MB
+
 email-upload-path: /home/whilemouse/email

@@ -23,7 +23,7 @@ public class SchedulingConfiguration {
 
     @Scheduled(fixedRate = 5000)
     public void test() throws Exception {
-        handle();
+//        handle();
     }
 
     public void handle() throws Exception {
