@@ -34,7 +34,7 @@ public class SchedulingConfiguration {
 
     @Scheduled(initialDelay = 5000, fixedRate = 5000)
     public void schedule() throws Exception {
-        handle();
+//        handle();
     }
 
     public void handle() throws Exception {
