@@ -30,7 +30,6 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-data-jpa')
 	compile('org.springframework.boot:spring-boot-starter-web')
 	compile('org.springframework.boot:spring-boot-starter-web')
-	compile('de.chandre.quartz:spring-boot-starter-quartz:1.0.1')
 	compile("joda-time:joda-time:2.9.4")
 	compile("org.jadira.usertype:usertype.extended:5.0.0.GA")
 	runtime('mysql:mysql-connector-java')
