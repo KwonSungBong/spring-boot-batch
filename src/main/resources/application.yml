@@ -17,9 +17,9 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
 
   mail:
-    host: mail.bookstorage.kr
+    host: amail.bookstorage.kr
     port: 587
-    username: ksb@bookstorage.kr
+    username: amail@bookstorage.kr
     password: 123456
     properties:
       mail:

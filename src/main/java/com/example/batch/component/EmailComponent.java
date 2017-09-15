@@ -23,8 +23,8 @@ public class EmailComponent {
 
     public void test() {
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom("ksb@bookstorage.kr");
-        message.setTo("rnjstjdqhd39@naver.com");
+        message.setFrom("amail@bookstorage.kr");
+        message.setTo("rnjstjdqhd3939@gmail.com");
         message.setSubject("hello");
         message.setText("hello");
         emailSender.send(message);
